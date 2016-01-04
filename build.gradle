@@ -1,0 +1,48 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+if (project.hasProperty("topobyte")) {
+    apply from: 'file:///' + System.getProperty("user.home") \
+        + '/.gradle/topobyte.gradle'
+}
+
+group = pGroup
+version = pVersion
+
+repositories {
+    maven {
+        url 'http://mvn.topobyte.de'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.bric:javagraphics-math:0.0.1'
+    compile 'com.bric:javagraphics-reflect:0.0.1'
+    compile 'com.bric:javagraphics-geom:0.0.1'
+    compile 'com.bric:javagraphics-util:0.0.1'
+    compile 'com.bric:javagraphics-blog:0.0.1'
+    compile 'com.bric:javagraphics-io:0.0.1'
+    compile 'com.bric:javagraphics-awt:0.0.1'
+
+    testCompile 'junit:junit:4.11'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+    from fileTree('License.html')
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+jar {
+    from fileTree('License.html')
+}
