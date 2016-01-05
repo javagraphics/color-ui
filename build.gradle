@@ -22,13 +22,9 @@ repositories {
 }
 
 dependencies {
-    compile 'com.bric:javagraphics-math:0.0.1'
-    compile 'com.bric:javagraphics-reflect:0.0.1'
-    compile 'com.bric:javagraphics-geom:0.0.1'
-    compile 'com.bric:javagraphics-util:0.0.1'
-    compile 'com.bric:javagraphics-blog:0.0.1'
-    compile 'com.bric:javagraphics-io:0.0.1'
     compile 'com.bric:javagraphics-awt:0.0.1'
+    compile 'com.bric:javagraphics-io:0.0.1'
+    compile 'com.bric:javagraphics-reflect:0.0.1'
 
     testCompile 'junit:junit:4.11'
 }
